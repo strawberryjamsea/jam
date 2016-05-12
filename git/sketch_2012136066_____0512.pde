@@ -1,6 +1,7 @@
-int radius = 30;
-float x = -radius;
-float speed = 1.0;
+int radius = 50;
+float x = radius;
+float speed = 3.0;
+int direction = 1;
 
 void setup(){
   size(640, 480);
@@ -9,7 +10,6 @@ ellipseMode(RADIUS);
 }
 void draw(){
   background(150);
-smooth( );
 strokeWeight(5);
 stroke(255,255,255);
 fill(0,0,0);
@@ -21,6 +21,14 @@ line(70, 40, 120, 100);
 line(150, 20, 120, 100);
 
 
-x += speed;
-arc(x, 300, radius, radius, 0.52, 5.76);
+x += speed * direction;
+if( (x > width - radius) || (x < radius) ) {
+direction = -direction;
+}
+if(direction == 1) { //left -> right
+arc(x, 400, radius, radius, 0.52, 5.76);
+}
+else { //left -> right
+arc(x, 400, radius, radius, 3.67, 8.9);
+}
 }
